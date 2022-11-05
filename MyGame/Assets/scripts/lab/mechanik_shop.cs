@@ -22,6 +22,7 @@ public class mechanik_shop : MonoBehaviour
     public GameObject rpg;
     public GameObject p90;
     public GameObject snowgun;
+    public GameObject awp;
 
     public GameObject buy_menu;
     private weapons_upgrade script;
@@ -29,7 +30,7 @@ public class mechanik_shop : MonoBehaviour
     public int category;
     public Text text;
 
-    private GameObject[] weapons_arr= new GameObject[6];
+    private GameObject[] weapons_arr= new GameObject[7];
 
     public GameObject damage_marking1;
     public GameObject damage_marking2;
@@ -68,8 +69,8 @@ public class mechanik_shop : MonoBehaviour
         script = bill.gameObject.GetComponent<weapons_upgrade>();
         i = 0;
         sp = board.GetComponent<SpriteRenderer>();
-        //weapons_arr = new GameObject[6];
-        weapons_arr[0] = pistol; weapons_arr[1] = shotgun; weapons_arr[2] = ak47;weapons_arr[3] = rpg;weapons_arr[4] = p90;weapons_arr[5] = snowgun;
+        //weapons_arr = new GameObject[7];
+        weapons_arr[0] = pistol; weapons_arr[1] = shotgun; weapons_arr[5] = ak47;weapons_arr[4] = rpg;weapons_arr[2] = p90;weapons_arr[6] = snowgun;weapons_arr[3] = awp;
         damage_marking_arr[0] = damage_marking1; damage_marking_arr[1] = damage_marking2; damage_marking_arr[2] = damage_marking3; damage_marking_arr[3] = damage_marking4; damage_marking_arr[4] = damage_marking5;
         reload_marking_arr[0] = reload_marking1; reload_marking_arr[1] = reload_marking2; reload_marking_arr[2] = reload_marking3; reload_marking_arr[3] = reload_marking4; reload_marking_arr[4] = reload_marking5;
         ammunition_marking_arr[0] = ammunition_marking1; ammunition_marking_arr[1] = ammunition_marking2; ammunition_marking_arr[2] = ammunition_marking3; ammunition_marking_arr[3] = ammunition_marking4; ammunition_marking_arr[4] = ammunition_marking5;

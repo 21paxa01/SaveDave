@@ -8,7 +8,6 @@ public class death : MonoBehaviour
 {
     public GameObject death_menu;
     public AudioSource pause_sound;
-    public GameObject restart;
     private string[] anonim_phrases = { "Failure again? So you won't last long...", "Better luck next time! Or not?", "I thought you were a better shot... " };
     public GameObject dead_bill;
     public GameObject dead_anonim;
@@ -35,7 +34,6 @@ public class death : MonoBehaviour
     {
         pause_sound.Play();
         bill.OnRoad = false;
-        restart.SetActive(true);
         wave_img.victory = false;
         bill.HP = 100f;
         death_menu.SetActive(false);

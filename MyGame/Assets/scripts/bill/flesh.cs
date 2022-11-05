@@ -10,6 +10,7 @@ public class flesh : MonoBehaviour
     public Collider2D coll;
     public MoneyCount script;
     private MoneyMagnet magnet_script;
+    public bool money;
     public int i;
     void Start()
     {
@@ -18,16 +19,22 @@ public class flesh : MonoBehaviour
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
         magnet_script = GetComponent<MoneyMagnet>();
+        Invoke("start_die", 5f);
     }
     void Update()
     {
-        if(transform.position.y<= -3.011614f)
+        if(transform.position.y<= -3.011614f&&money==false)
         {
             anim.SetBool("drop", true);
             transform.position = new Vector3(transform.position.x, -3.011614f, transform.position.z);
             rb.gravityScale = 0f;
         }
-       
+        if (transform.position.y <= -11.515f && money == true)
+        {
+            anim.SetBool("drop", true);
+            transform.position = new Vector3(transform.position.x, -11.515f, transform.position.z);
+            rb.gravityScale = 0f;
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,7 +42,14 @@ public class flesh : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            script.flesh[i]++;
+            if (money == false)
+            {
+                script.flesh[i]++;
+            }
+            else
+            {
+                script.mon++;
+            }
             script.Save();
         }        
     }
@@ -48,6 +62,25 @@ public class flesh : MonoBehaviour
             testik++;
         }
     }
-   
+    private void start_die()
+    {
+        StartCoroutine(Die());
+    }
+   IEnumerator Die()
+    {
+        for(float i = 0; i < 50; i++)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f - i / 100);
+            yield return new WaitForSeconds(0.04f);
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+            yield return new WaitForSeconds(0.1f);
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        Destroy(gameObject);
+    }
     
 }

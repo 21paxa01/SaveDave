@@ -38,8 +38,8 @@ public class weapons_upgrade: MonoBehaviour
         ammunition_count = script.save_ammunition_count;
         weapons_arr = new GameObject[7];
         ammo_arr = new GameObject[7];
-        weapons_arr[0] = pistol;weapons_arr[1] = shotgun;weapons_arr[2] = ak47;weapons_arr[3] = rpg;weapons_arr[4] = p90;weapons_arr[5]=snowgun ; weapons_arr[6] = awp;
-        ammo_arr[0] = pistol_ammo;ammo_arr[1] = shotgun_ammo;ammo_arr[2] = ak47_ammo; ammo_arr[3] = rpg_ammo;ammo_arr[4] = p90_ammo;ammo_arr[5]=snowgun_ammo ; ammo_arr[6] = awp_ammo;
+        weapons_arr[0] = pistol;weapons_arr[1] = shotgun;weapons_arr[5] = ak47;weapons_arr[4] = rpg;weapons_arr[2] = p90;weapons_arr[6]=snowgun ; weapons_arr[3] = awp;
+        ammo_arr[0] = pistol_ammo;ammo_arr[1] = shotgun_ammo;ammo_arr[5] = ak47_ammo; ammo_arr[4] = rpg_ammo;ammo_arr[2] = p90_ammo;ammo_arr[6]=snowgun_ammo ; ammo_arr[3] = awp_ammo;
     }
 
     

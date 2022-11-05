@@ -69,6 +69,8 @@ public class bird : MonoBehaviour
         if (stop == false)
         {
             hp = script.hp;
+            if (transform.position.y < -3f&& transform.position.y>-30f)
+                transform.position = new Vector3(transform.position .x,- 2f, transform.position.z);
             if (player.transform.position.x < transform.position.x && death == false)
             {
                 physik.velocity = new Vector2(-speed, 0);
@@ -81,12 +83,12 @@ public class bird : MonoBehaviour
             }
             if (player.transform.position.x < transform.position.x && death == false && player.transform.position.y + 0.30f < transform.position.y&&kef_x<=4f)
             {
-                physik.velocity = new Vector2(-speed, (-speed) / (kef_x / kef_y));
+                physik.velocity = new Vector2(-speed, (-speed) / 3);
                 transform.localScale = new Vector2(1, 1);
             }
             else if (player.transform.position.x > transform.position.x && death == false && player.transform.position.y + 0.30f < transform.position.y&&kef_x<=4f)
             {
-                physik.velocity = new Vector2(+speed, (-speed)/(kef_x/kef_y) );
+                physik.velocity = new Vector2(+speed, (-speed)/3 );
                 transform.localScale = new Vector2(-1, 1);
             }
             if (death == true || WALL == true)
@@ -128,6 +130,10 @@ public class bird : MonoBehaviour
         {
             stop = true;
             physik.velocity = new Vector2(0f, 0f);
+        }
+        if(other.name=="road u")
+        {
+            discard();
         }
     }
     private int dam = 0;

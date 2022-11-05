@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +26,7 @@ public class shoting : MonoBehaviour
     public Text remained_ammo;
 
     public bool faceRight = true;
+    public bool minigun;
     void Start()
     {
     }
@@ -34,10 +35,15 @@ public class shoting : MonoBehaviour
 
         float rotateZ = Mathf.Atan2(joystick.Vertical, joystick.Horizontal) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
-        if (ReloaD == false)
-            remained_ammo.text =(Ammunition - reload).ToString() + " / " + Ammunition.ToString();
+        if (minigun == false)
+        {
+            if (ReloaD == false)
+                remained_ammo.text = (Ammunition - reload).ToString() + " / " + Ammunition.ToString();
+            else
+                remained_ammo.text = "Reload...";
+        }
         else
-            remained_ammo.text = "Reload...";
+            remained_ammo.text = "∞";
         Vector3 LocalScale = Vector3.one;
         if (rotateZ > 90 || rotateZ < -90)
         {
@@ -82,6 +88,7 @@ public class shoting : MonoBehaviour
     public bool ReloaD;
     IEnumerator FireDelay()
     {
+        yield return new WaitForSeconds(0.1f);
         while (shot==true)
         {
             if (reload < Ammunition)

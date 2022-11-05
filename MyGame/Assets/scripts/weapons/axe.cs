@@ -19,6 +19,7 @@ public class axe : MonoBehaviour
     public bool right;
     public bool left;
     public GameObject line;
+    public bool test;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -63,16 +64,20 @@ public class axe : MonoBehaviour
             script = other.gameObject.GetComponent<zombie_hp>();
             if (right == true) script.kef = 1;
             else script.kef = -1;
-            script.discard();
-            if (script.death == false)
+            if (test == false)
             {
-                if (script.hp + damage > script.HP)
+                script.discard();
+                if (script.death == false)
                 {
-                    script.hp = script.HP;
+                    test = true;
+                    if (script.hp + damage > script.HP)
+                    {
+                        script.hp = script.HP;
+                    }
+                    else
+                        script.hp += damage;
+                    script.fill = 1 - script.hp / script.HP;
                 }
-                else
-                    script.hp += damage;
-                script.fill = 1 - script.hp / script.HP;
             }
         }
     }

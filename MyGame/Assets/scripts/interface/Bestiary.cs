@@ -36,6 +36,7 @@ public class Bestiary : MonoBehaviour
     public GameObject speed_1, speed_2, speed_3, speed_4, speed_5, power_1, power_2, power_3, power_4, power_5, health_1, health_2, health_3, health_4, health_5;
     public string[] names = {"Bobo", "Karl", "Bird", "Gru", "Bibo", "Boom_bird", "Lara", "Giovanni", "Richard", "Martin", "Mike", "Bo" };
     public Text name;
+    public bool cell_anim;
     void Start()
     {
         i = 0;
@@ -89,10 +90,13 @@ public class Bestiary : MonoBehaviour
     public void Menu_ON()
     {
         Bestiary_menu.SetActive(true);
+        cell_anim = true;
+        StartCoroutine(Cell_animation());
     }
     public void Menu_OFF()
     {
         Bestiary_menu.SetActive(false);
+        cell_anim = false;
     }
     public void Chek_zombies()
     {
@@ -128,5 +132,22 @@ public class Bestiary : MonoBehaviour
                 health_arr[k].SetActive(true);
         }
         name.text = names[i];
+    }
+    public int cell_ind;
+    public int cell_ind_chek;
+    IEnumerator Cell_animation()
+    {
+        //cell_chek = 0;
+        while (cell_anim == true)
+        {
+            do
+            {
+                cell_ind = Random.Range(1, 4);
+            } while (cell_ind == cell_ind_chek);
+            cell_ind_chek = cell_ind;
+            yield return new WaitForSecondsRealtime(0.5f);
+            cell_ind = -1;
+            yield return new WaitForSecondsRealtime(3f);
+        }
     }
 }

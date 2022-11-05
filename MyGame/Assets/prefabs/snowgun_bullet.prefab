@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1986918428066819429}
   m_Layer: 0
   m_Name: snowgun_bullet
-  m_TagString: Untagged
+  m_TagString: ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,6 @@ MonoBehaviour:
   ammo_damage: 1
   default_damage: 1
   road: 1
-  test: 0
 --- !u!95 &8068605047083259096
 Animator:
   serializedVersion: 3

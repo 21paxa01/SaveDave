@@ -17,6 +17,7 @@ public class new_wave : MonoBehaviour
     }
     public void NeW_Wave()
     {
-        spawn.wave++;
+        GameObject.Find("save").GetComponent<Save>().save_wave++;
+        GameObject.Find("save").GetComponent<Save>().Save_progress();
     }
 }

@@ -26,14 +26,19 @@ public class change_weapon : MonoBehaviour
     private shoting script;
     public bool[] chek= { false,false,false,false,false,false,false,false,false};
     public bool[] g_chek = { false ,false,false,false,false};
-    public bool[] reload = { true, true, true, false, true, true, true,false, true };
+    public bool[] reload = { true, true, true, false, true, true, false, true, true };
     private bool find;
     public static int k;
     private int l=9;
-    public int test;
+    public float test;
     public GameObject realod_button;
     private stick stick_script;
     public bool ult;
+    private Save save;
+
+    private ammo ammo_script;
+    private GameObject[] ammo_arr;
+    public GameObject pistol_ammo, shotgun_ammo, ak47_ammo, awp_ammo, rpg_ammo, p90_ammo, snowgun_ammo;
     void Start()
     {
         realod_button.SetActive(false);
@@ -47,12 +52,14 @@ public class change_weapon : MonoBehaviour
         grenages_arr = new GameObject[5];
         grenages_arr[0] = infantry_grenage;grenages_arr[1] = dynamite;grenages_arr[2] = ice_grenade;grenages_arr[3] = fire_grenage;grenages_arr[4] = smoke_grenage;
         stick_script = stick.GetComponent<stick>();
+        save=GameObject.Find("save").GetComponent<Save>();
+        ammo_arr = new GameObject[7];
+        ammo_arr[0] = pistol_ammo; ammo_arr[1] = shotgun_ammo; ammo_arr[5] = ak47_ammo; ammo_arr[4] = rpg_ammo; ammo_arr[2] = p90_ammo; ammo_arr[6] = snowgun_ammo; ammo_arr[3] = awp_ammo;
     }
 
     
     void Update()
     {
-        test = change;
         if(ult==false)
             shoting= weapons[change];
     }
@@ -69,7 +76,7 @@ public class change_weapon : MonoBehaviour
     public void update()
     {
         stick_script.inventory = false;
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 9; i++)
         {
             if (chek[i] == true&&reload[i]==true)
             {
@@ -97,14 +104,34 @@ public class change_weapon : MonoBehaviour
         testik = false;
         for(int i = 0; i < 9; i++)
         {
-            if (chek[i] == true)
+            weapons[i].SetActive(false);
+            now_weapon[i].SetActive(false);
+            if (chek[i] == true&&testik==false)
             {
                 testik = true;
                 weapons[i].SetActive(true);
                 now_weapon[i].SetActive(true);
                 change = i;
-                break;
             }
+        }
+    }
+    private int kef;
+    public void ChangeStats()
+    {
+        kef = 0;
+        save.Load_upgrade();
+        for (int i = 0; i < 9; i++)
+        {
+            if (reload[i] == true)
+            {
+                ammo_script = ammo_arr[i-kef].GetComponent<ammo>();
+                script = weapons[i].GetComponent<shoting>();
+                ammo_script.ammo_damage = ammo_script.default_damage + ammo_script.default_damage * (float)save.save_damage_count[i-kef]/5;
+                script.Ammunition = script.DefaultAmmunition + script.DefaultAmmunition * (float)save.save_ammunition_count[i-kef]/5;
+                script.startTime = script.DefaultstartTime * (1-(float)save.save_reload_count[i-kef]/10);
+            }
+            else
+                kef++;
         }
     }
     public void Reload()

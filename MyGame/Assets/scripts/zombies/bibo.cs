@@ -33,12 +33,14 @@ public class bibo  : MonoBehaviour
     private float hp = 0;
     private bill bill;
     private shield_for_bill shield_scr;
+    private bill_debaffs bill_deb;
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         debaff = GetComponent<zombie_debaffs>();
         physik = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Bill");
+        bill_deb = player.GetComponent<bill_debaffs>();
         anim = GetComponent<Animator>();
         zomb_damage = zombie_damage;
         script = zombie_hp.gameObject.GetComponent<zombie_hp>();
@@ -86,12 +88,12 @@ public class bibo  : MonoBehaviour
         anim.SetBool("fight", fight);
 
 
-        if (player.transform.position.x < transform.position.x && distToPlayer > dist_to_player && death == false)
+        if (player.transform.position.x+0.2f < transform.position.x && distToPlayer > dist_to_player && death == false)
         {
             physik.velocity = new Vector2(-speed, 0);
             transform.localScale = new Vector2(-1, 1);
         }
-        if (player.transform.position.x > transform.position.x && distToPlayer > dist_to_player && death == false)
+        if (player.transform.position.x- 0.2f > transform.position.x && distToPlayer > dist_to_player && death == false)
         {
             physik.velocity = new Vector2(+speed, 0);
             transform.localScale = new Vector2(1, 1);
@@ -101,9 +103,7 @@ public class bibo  : MonoBehaviour
             physik.velocity = new Vector2(0, 0);
 
             if (distToPlayer <= dist_to_player)
-                poison.pois = true;
-            else
-                poison.pois = false;
+                bill_deb.poison_start();
         }
         if (WALL == true)
         {

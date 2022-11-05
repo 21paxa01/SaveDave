@@ -9,7 +9,7 @@ public class inventory_skin : MonoBehaviour
     public Inventory script;
     public int i;
     public GameObject bill;
-    //public GameObject light;
+    public GameObject light;
     private SpriteRenderer weapon_sprite;
     private SpriteRenderer sprite;
     private bill b_script;
@@ -27,6 +27,8 @@ public class inventory_skin : MonoBehaviour
     }
     public void Skin_ON()
     {
+        script.Light_off();
+        light.SetActive(true);
         script.Skin_OFF();
         script.s_i = i;
         script.Skin_ON();

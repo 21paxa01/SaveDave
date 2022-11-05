@@ -27,6 +27,7 @@ public class StartMenu : MonoBehaviour
         perechod.SetActive(true);
         yield return new WaitForSeconds(1f);
         save.training = false;
+        save.inventory = true;
         save.Save_training();
         SceneManager.LoadScene(3);
     }

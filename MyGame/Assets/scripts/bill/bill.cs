@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class bill : MonoBehaviour 
 {
     
@@ -22,7 +23,7 @@ public class bill : MonoBehaviour
     public bool weapon_chek;
     public bool death;
     public GameObject panel;
-    public GameObject money_icon;
+    public GameObject money_icon,flesh_icon;
 
     public GameObject reload_button;
     public GameObject weapons;
@@ -71,6 +72,8 @@ public class bill : MonoBehaviour
     public Image torg_button;
     public change_weapon change;
     private Save save;
+    public respawn_time resp_script;
+    public AudioSource rain_sound;
     void Start()
     {
         shield = GetComponent<shield_for_bill>();
@@ -176,7 +179,7 @@ public class bill : MonoBehaviour
                 torg_button.color = new Color(1f, 1f, 1f, 1f);
             else
                 torg_button.color = new Color(1f, 1f, 1f, 0f);
-            if (transform.position.x > 4.55f && transform.position.x < 5.15f && transform.position.y < -6f && transform.position.y > -12f)
+            if (transform.position.x > 4.55f && transform.position.x < 5.15f && transform.position.y < -6f && transform.position.y > -12f&&GetComponent<MoneyCount>().flesh[0]+ GetComponent<MoneyCount>().flesh[1] + GetComponent<MoneyCount>().flesh[2]>0 )
                 drink.SetActive(true);
             else
                 drink.SetActive(false);
@@ -352,10 +355,12 @@ public class bill : MonoBehaviour
                 {
                     rain = GameObject.Find("rain");
                     rain_sp = rain.GetComponent<SpriteRenderer>();
+                    rain_sound = rain.GetComponent<AudioSource>();
                     rain_sp.sortingOrder = 30;
                     rain = GameObject.Find("rain_2");
                     rain_sp = rain.GetComponent<SpriteRenderer>();
                     rain_sp.sortingOrder = 30;
+                    rain_sound.Play();
                 }
                 road_sprite.sortingOrder = 21;
                 for_home.SetActive(false);
@@ -364,6 +369,7 @@ public class bill : MonoBehaviour
                 ZoomCamera.zoom = 2f;
                 //money_icon.anchoredPosition = new Vector2(-75f, -143f);
                 money_icon.SetActive(false);
+                flesh_icon.SetActive(false);
                 ShopCamera.y = -0.4f;
                 testik = -0.4f;
                 OnRoad = true;
@@ -388,6 +394,7 @@ public class bill : MonoBehaviour
     {
         upStairs = true;
         road_sprite = GameObject.Find("new_road").GetComponent<SpriteRenderer>();
+        GameObject.Find("kettle").GetComponent<kettle>().Stop();
         stairs_sound.Play();
     }
     private bool off;
@@ -450,18 +457,26 @@ public class bill : MonoBehaviour
     public GameObject perechod;
     IEnumerator respawn()
     {
+        stop = true;
         save.anonim = true;
         if(skin==false)
             sprite.color = new Color(1f, 1f, 1f, 1f);
         invulnerability = false;
         perechod.SetActive(true);
         yield  return new WaitForSeconds(1f);
+        resp_script.chek = true;
+        //SceneManager.LoadScene(1);
+        //Time.timeScale = 1f;
+        GameObject.Find("Ultimate").GetComponent<ult_button>().chek = false;
+        GameObject.Find("Ultimate").GetComponent<Animator>().SetBool("update", true);
         shield.HP = shield.hp;
         rain = GameObject.Find("rain");
+        rain_sound = rain.GetComponent<AudioSource>();
         rain_sp = rain.GetComponent<SpriteRenderer>();
         rain_sp.sortingOrder = -10;
         rain = GameObject.Find("rain_2");
         rain_sp = rain.GetComponent<SpriteRenderer>();
+        rain_sound.Stop();
         rain_sp.sortingOrder = -10;
         cell_script = grenage_cell_1.GetComponent<granade_cell>();
         cell_script.Update_cell();
@@ -471,6 +486,7 @@ public class bill : MonoBehaviour
         panel.SetActive(false);
         //money_icon.anchoredPosition = new Vector2(-375f, 160f);
         money_icon.SetActive(true);
+        flesh_icon.SetActive(true);
         off = false;
         wave_img.victory = false;
         Wave.SetActive(false);
@@ -484,10 +500,13 @@ public class bill : MonoBehaviour
         death = false;
         //anim.SetBool("death", death);
         transform.position = new Vector3(5.08f, -4.98126411f, 0f);
+        stop = false;
         ShopCamera.y = 0f;
         reload_button.SetActive(false);
         ammo_chek = false;
         yield return new WaitForSeconds(1f);
+        //SceneManager.LoadScene(1);
+        //Time.timeScale = 1f;
         perechod.SetActive(false);
     }
     public int kef=1;

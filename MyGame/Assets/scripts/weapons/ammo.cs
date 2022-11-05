@@ -51,6 +51,7 @@ public class ammo : MonoBehaviour
         }
         if(other.name == "wall(Clone)" || other.name == "Shield")
         {
+            test = false;
             ammo_damage = 0f;
             StartCoroutine(Die());
         }

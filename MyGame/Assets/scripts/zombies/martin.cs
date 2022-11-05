@@ -29,7 +29,7 @@ public class martin : MonoBehaviour
     public float speed;
     public float HP;
     private float hp = 0;
-
+    public float boom_kef;
     private bill bill;
     void Start()
     {
@@ -74,12 +74,12 @@ public class martin : MonoBehaviour
         if (player.transform.position.x < transform.position.x && distToPlayer > dist_to_player && death == false)
         {
             physik.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector2(-1*boom_kef, 1);
         }
         if (player.transform.position.x > transform.position.x && distToPlayer > dist_to_player && death == false)
         {
             physik.velocity = new Vector2(+speed, 0);
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(1 * boom_kef, 1);
         }
         if (WALL == true)
         {
@@ -87,9 +87,22 @@ public class martin : MonoBehaviour
         }
         if (hp >= HP&&death==false)
         {
-            death = true;
+            //death = true;
             physik.velocity = new Vector2(0, 0);
             StartCoroutine(Die());
+        }
+        if (death == true)
+        {
+            if (player.transform.position.x < transform.position.x && distToPlayer > dist_to_player)
+            {
+                physik.velocity = new Vector2(0, 0);
+                transform.localScale = new Vector2(-1 * boom_kef, boom_kef);
+            }
+            if (player.transform.position.x > transform.position.x && distToPlayer > dist_to_player)
+            {
+                physik.velocity = new Vector2(0, 0);
+                transform.localScale = new Vector2(1 * boom_kef, boom_kef);
+            }
         }
     }
     private bool WALL;

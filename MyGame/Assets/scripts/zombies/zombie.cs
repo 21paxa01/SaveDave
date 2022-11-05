@@ -32,6 +32,8 @@ public class zombie : MonoBehaviour
     private bill bill;
     private shield_for_bill shield_scr;
     private spawn spawn_script;
+    private Save save;
+    private int chek_rotate;
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -45,8 +47,9 @@ public class zombie : MonoBehaviour
         bill = player.GetComponent<bill>();
         shield_scr = player.GetComponent<shield_for_bill>();
         spawn_script = GameObject.Find("spawn_point").GetComponent<spawn>();
-        if (spawn_script.last == true)
-            new_weap = true;
+        //if (spawn_script.last == true)
+          //  new_weap = true;
+        save = GameObject.Find("save").GetComponent<Save>();
     }
     public float dist_to_player;
     void Update()
@@ -89,12 +92,12 @@ public class zombie : MonoBehaviour
 
         if (script.stop == false)
         {
-            if (player.transform.position.x < transform.position.x+0.1f && distToPlayer > dist_to_player && death == false)
+            if (player.transform.position.x+0.2f < transform.position.x && distToPlayer > dist_to_player && death == false)
             {
                 physik.velocity = new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-1, 1);
             }
-            if (player.transform.position.x > transform.position.x-0.1f && distToPlayer > dist_to_player && death == false)
+            if (player.transform.position.x-0.2f > transform.position.x && distToPlayer > dist_to_player && death == false)
             {
                 physik.velocity = new Vector2(+speed, 0);
                 transform.localScale = new Vector2(1, 1);
@@ -202,14 +205,15 @@ public class zombie : MonoBehaviour
     }
     void Die()
     {
-        if (new_weap== true&&spawn.wave==1)
-            Instantiate(drawing, money_spawn.position, transform.rotation);
-        else
-            Instantiate(money, money_spawn.position, transform.rotation);
+        Instantiate(money, money_spawn.position, transform.rotation);
         zombie_damage = 0;
        
     }
-    
+    IEnumerator Update_rotate()
+    {
+        chek_rotate = 0;
+        yield return new WaitForSeconds(0.1f);
+    }
     
 
 

@@ -16,6 +16,10 @@ public class zombie_hp : MonoBehaviour
     public SpriteRenderer sp;
     public Rigidbody2D rb;
     public Save save_script;
+    private bool new_weap;
+    private spawn spawn_script;
+    public GameObject drawing;
+    public Transform money_spawn;
 
     void Start()
     {
@@ -24,6 +28,9 @@ public class zombie_hp : MonoBehaviour
         anim = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
         save_script = GameObject.Find("save").GetComponent<Save>();
+        spawn_script = GameObject.Find("spawn_point").GetComponent<spawn>();
+        if (spawn_script.last == true)
+            new_weap = true;
     }
 
     
@@ -38,6 +45,8 @@ public class zombie_hp : MonoBehaviour
     }
     public float HP;
     public float hp = 0;
+
+    public bool bird;
     IEnumerator Die()
     {
         sp.sortingOrder = 8;
@@ -46,6 +55,11 @@ public class zombie_hp : MonoBehaviour
         save_script.Save_task();
         anim.SetBool("death", death);
         Destroy(back);
+        if (spawn_script.last == true&& spawn.zombie_kol==0&&bird==false)
+        {
+            if (save_script.save_wave == 1 || save_script.save_wave == 2 || save_script.save_wave == 3 || save_script.save_wave == 5)
+                Instantiate(drawing, money_spawn.position, transform.rotation);
+        }
         yield return new WaitForSeconds(death_time);
         Destroy(gameObject);
         hp = 0;

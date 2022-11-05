@@ -7,7 +7,7 @@ public class ultimate : MonoBehaviour
     public change_weapon change;
     private int change_i;
     public GameObject skins;
-    public Animator anim;
+    public Animator anim,button_anim;
     private bool move;
     public GameObject weapon;
     public GameObject minigun_icon;
@@ -30,14 +30,18 @@ public class ultimate : MonoBehaviour
     {
         change_weapon.change = change_i;
         change.weapons[change_i].SetActive(true);
+        if (change.reload[change_weapon.change] == true)
+            change.weapons[change_weapon.change].GetComponent<shoting>().ReloaD = false;
         change.ult = false;
         skins.SetActive(true);
         weapon.SetActive(true);
         minigun_icon.SetActive(false);
+        button_anim.SetBool("ative", false);
         gameObject.SetActive(false);
     }
     public void Activate()
     {
+        button_anim.SetBool("ative", true);
         weapon.SetActive(false);
         minigun_icon.SetActive(true);
         change_i = change_weapon.change;

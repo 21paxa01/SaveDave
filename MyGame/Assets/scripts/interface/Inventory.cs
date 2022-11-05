@@ -31,12 +31,16 @@ public class Inventory : MonoBehaviour
     public Image img;
     public int[] now_weapon;
     public GameObject[] cells_arr, g_cells_arr,s_cells_arr,blue_light_arr;
-    public int[] cell_ind_arr = { 0, 0, 0, 0, 0, 0 };
+    public int[] cell_ind_arr = { 0, 0, 0, 0, 0, 0,0,0,0 };
     public int[] g_cell_ind_arr = { 0, 0, 0, 0, 0, 0 };
     public int[] s_cell_ind_arr = { 0, 0, 0, 0, 0, 0 };
-    public GameObject light_1; public GameObject light_2; public GameObject light_3; public GameObject light_4; public GameObject light_5; public GameObject light_6;
-    private GameObject[] light;
+    public GameObject w_light_1, w_light_2, w_light_3, w_light_4, w_light_5, w_light_6, w_light_7, w_light_8, w_light_9;
+    private GameObject[] w_light;
+    private GameObject[] g_light;
+    private GameObject[] s_light;
     public GameObject blue_light_1, blue_light_2, blue_light_3, blue_light_4, blue_light_5, blue_light_6, blue_light_7, blue_light_8;
+    public GameObject g_light_1, g_light_2, g_light_3, g_light_4, g_light_5;
+    public GameObject s_light_1, s_light_2, s_light_3, s_light_4;
     public Image weapon_sprite,grenade_sprite;
     public SpriteRenderer skin_sprite;
     public Image cell_sprite,g_cell_sprite,s_cell_sprite;
@@ -44,7 +48,7 @@ public class Inventory : MonoBehaviour
     public inventory_grenade g_script;
     public inventory_skin s_script;
     public Save save_script;
-    public GameObject cell1, cell2, cell3, cell4, cell5, cell6;
+    public GameObject cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9;
     public GameObject g_cell1, g_cell2, g_cell3, g_cell4, g_cell5, g_cell6;
     public GameObject s_cell1, s_cell2, s_cell3, s_cell4, s_cell5, s_cell6;
     private string[] category = { "weapon", "skins", "grenade" };
@@ -63,8 +67,12 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         fon.SetActive(false);
-        light = new GameObject[6];
-        light[0] = light_1;light[1] = light_2;light[2] = light_3;light[3] = light_4;light[4] = light_5;light[5] = light_6;
+        w_light = new GameObject[9];
+        w_light[0] = w_light_1; w_light[1] = w_light_2; w_light[2] = w_light_3; w_light[3] = w_light_4; w_light[4] = w_light_5; w_light[5] = w_light_6; w_light[6] = w_light_7; w_light[7] = w_light_8; w_light[8] = w_light_9;
+        g_light = new GameObject[5];
+        g_light[0] = g_light_1; g_light[1] = g_light_2; g_light[2] = g_light_3; g_light[3] = g_light_4; g_light[4] = g_light_5;
+        s_light = new GameObject[4];
+        s_light[0] = s_light_1; s_light[1] = s_light_2; s_light[2] = s_light_3; s_light[3] = s_light_4; 
         category_i = 0;
         //category_text = cat_text.GetComponent<Text>();
         save_script = GameObject.Find("save").GetComponent<Save>();
@@ -81,8 +89,8 @@ public class Inventory : MonoBehaviour
         bill_sprite = GameObject.Find("Bill").GetComponent<SpriteRenderer>();
         weapons_arr = new GameObject[9];
         weapons_arr[0] = pistol;weapons_arr[1] = shotgun;weapons_arr[2] = p_90; weapons_arr[3] = stick;weapons_arr[4]=rifle ; weapons_arr[5] = rpg; weapons_arr[6] = axe; weapons_arr[7] = ak_47; weapons_arr[8] = snowgun;
-        cells_arr = new GameObject[6];
-        cells_arr[0] = cell1;cells_arr[1] = cell2; cells_arr[2] = cell3; cells_arr[3] = cell4; cells_arr[4] = cell5; cells_arr[5] = cell6;
+        cells_arr = new GameObject[9];
+        cells_arr[0] = cell1;cells_arr[1] = cell2; cells_arr[2] = cell3; cells_arr[3] = cell4; cells_arr[4] = cell5; cells_arr[5] = cell6; cells_arr[6] = cell7; cells_arr[7] = cell8; cells_arr[8] = cell9;
         g_cells_arr = new GameObject[6];
         g_cells_arr[0] = g_cell1; g_cells_arr[1] = g_cell2; g_cells_arr[2] = g_cell3; g_cells_arr[3] = g_cell4; g_cells_arr[4] = g_cell5; g_cells_arr[5] = g_cell6;
         grenades_arr = new GameObject[5];
@@ -265,8 +273,12 @@ public class Inventory : MonoBehaviour
     public GameObject granage_category;
     public void Light_off()
     {
-        for (int i = 0; i < 6; i++)
-            light[i].SetActive(false);
+        for (int i = 0; i < 9; i++)
+            w_light[i].SetActive(false);
+        for (int i = 0; i < 5; i++)
+            g_light[i].SetActive(false);
+        for (int i = 0; i < 4; i++)
+            s_light[i].SetActive(false);
         for (int i = 0; i < 9; i++)
             change_weapon.weapons[i].SetActive(false);
     }
@@ -275,12 +287,13 @@ public class Inventory : MonoBehaviour
         category_i = 0;
         OFF_ALL();
         UpdateCells();
+        ChangeColor(0, 1, 2);
         blue_light_arr[0].SetActive(true); blue_light_arr[1].SetActive(true);
         cell = weapon_cell_1.GetComponent<RectTransform>();
-        cell.anchoredPosition = new Vector2(-420,cell.anchoredPosition.y);cell.localScale = new Vector3(1.3f,1.3f,1f);
-        cell = weapon_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell = weapon_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(-420, cell.anchoredPosition.y);
+        cell.anchoredPosition = new Vector2(-420,cell.anchoredPosition.y+10);cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell = weapon_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell = weapon_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(-420, cell.anchoredPosition.y-10);
         skins_menu.SetActive(false);skins_light.SetActive(false);skins_trans.anchoredPosition = new Vector2(skins_trans.anchoredPosition.x, 281);
         traps_menu.SetActive(false); traps_light.SetActive(false); traps_trans.anchoredPosition = new Vector2(traps_trans.anchoredPosition.x, 281);
         granage_menu.SetActive(false);granage_light.SetActive(false); granage_trans.anchoredPosition = new Vector2(granage_trans.anchoredPosition.x, 281);
@@ -291,12 +304,13 @@ public class Inventory : MonoBehaviour
         category_i = 1;
         OFF_ALL();
         UpdateCells();
+        ChangeColor(3, 4, 5);
         blue_light_arr[2].SetActive(true); blue_light_arr[3].SetActive(true);
-        cell = skins_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x,60);
-        cell = skins_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell = skins_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x, 60);
+        cell = skins_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x-10,60);
+        cell = skins_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell = skins_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x+10, 60);
         traps_menu.SetActive(false); traps_light.SetActive(false); traps_trans.anchoredPosition = new Vector2(traps_trans.anchoredPosition.x, 281);
         granage_menu.SetActive(false); granage_light.SetActive(false); granage_trans.anchoredPosition = new Vector2(granage_trans.anchoredPosition.x, 281);
         weapons_menu.SetActive(false); weapon_light.SetActive(false); weapon_trans.anchoredPosition = new Vector2(weapon_trans.anchoredPosition.x, 281);
@@ -307,12 +321,13 @@ public class Inventory : MonoBehaviour
         category_i = 2;
         OFF_ALL();
         UpdateCells();
+        ChangeColor(9, 10, 11);
         blue_light_arr[4].SetActive(true); blue_light_arr[5].SetActive(true);
-        cell = traps_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x,29);
-        cell = traps_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell = traps_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x,29);
+        cell = traps_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x-10,29);
+        cell = traps_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell = traps_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(cell.anchoredPosition.x+10,29);
         skins_menu.SetActive(false); skins_light.SetActive(false); skins_trans.anchoredPosition = new Vector2(skins_trans.anchoredPosition.x, 281);
         granage_menu.SetActive(false); granage_light.SetActive(false); granage_trans.anchoredPosition = new Vector2(granage_trans.anchoredPosition.x, 281);
         weapons_menu.SetActive(false); weapon_light.SetActive(false); weapon_trans.anchoredPosition = new Vector2(weapon_trans.anchoredPosition.x, 281);
@@ -323,13 +338,14 @@ public class Inventory : MonoBehaviour
         category_i = 3;
         OFF_ALL();
         UpdateCells();
+        ChangeColor(6, 7, 8);
         blue_light_arr[6].SetActive(true); blue_light_arr[7].SetActive(true);
         i = 0;
-        cell = granage_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(-454,cell.anchoredPosition.y);
-        cell = granage_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell = granage_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.3f, 1.3f, 1f);
-        cell.anchoredPosition = new Vector2(-454,cell.anchoredPosition.y);
+        cell = granage_cell_1.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(-454,cell.anchoredPosition.y+10);
+        cell = granage_cell_2.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell = granage_cell_3.GetComponent<RectTransform>(); cell.localScale = new Vector3(1.5f, 1.5f, 1f);
+        cell.anchoredPosition = new Vector2(-454,cell.anchoredPosition.y-10);
         skins_menu.SetActive(false); skins_light.SetActive(false); skins_trans.anchoredPosition = new Vector2(skins_trans.anchoredPosition.x, 281);
         traps_menu.SetActive(false);traps_light.SetActive(false); traps_trans.anchoredPosition = new Vector2(traps_trans.anchoredPosition.x, 281);
         weapons_menu.SetActive(false);weapon_light.SetActive(false); weapon_trans.anchoredPosition = new Vector2(weapon_trans.anchoredPosition.x, 281);
@@ -347,6 +363,9 @@ public class Inventory : MonoBehaviour
     public GameObject granage_cell_1;
     public GameObject granage_cell_2;
     public GameObject granage_cell_3;
+
+    public GameObject shadow_1, shadow_2, shadow_3, shadow_4, shadow_5, shadow_6, shadow_7, shadow_8, shadow_9, shadow_10, shadow_11, shadow_12;
+    public GameObject contour_1, contour_2, contour_3, contour_4, contour_5, contour_6, contour_7, contour_8, contour_9, contour_10, contour_11, contour_12;
     private GameObject[] cells;
     private float[,] cells_pos;
     private RectTransform cell;
@@ -367,7 +386,33 @@ public class Inventory : MonoBehaviour
         for (int x = 0; x < 8; x++)
             blue_light_arr[x].SetActive(false);
         stop = true;
-        for (int i = 0; i < 6; i++)
-            light[i].SetActive(false);
+        for (int i = 0; i < 9; i++)
+            w_light[i].SetActive(false);
+        for (int i = 0; i < 5; i++)
+            g_light[i].SetActive(false);
+        for (int i = 0; i < 4; i++)
+            s_light[i].SetActive(false);
+    }
+    private GameObject[] color_cells_arr;
+    private GameObject[] contour_cells_arr;
+    private void ChangeColor(int x, int y, int z)
+    {
+        color_cells_arr = new GameObject[12];
+        contour_cells_arr = new GameObject[12];
+        color_cells_arr[0] = shadow_1; color_cells_arr[1] = shadow_2; color_cells_arr[2] = shadow_3; color_cells_arr[3] = shadow_4; color_cells_arr[4] = shadow_5; color_cells_arr[5] = shadow_6; color_cells_arr[6] = shadow_7; color_cells_arr[7] = shadow_8; color_cells_arr[8] = shadow_9; color_cells_arr[9] = shadow_10; color_cells_arr[10] = shadow_11; color_cells_arr[11] = shadow_12;
+        contour_cells_arr[0] = contour_1; contour_cells_arr[1] = contour_2; contour_cells_arr[2] = contour_3; contour_cells_arr[3] = contour_4; contour_cells_arr[4] = contour_5; contour_cells_arr[5] = contour_6; contour_cells_arr[6] = contour_7; contour_cells_arr[7] = contour_8; contour_cells_arr[8] = contour_9; contour_cells_arr[9] = contour_10; contour_cells_arr[10] = contour_11; contour_cells_arr[11] = contour_12;
+        for (int k = 0; k < 12; k++)
+            if (k != x && k != y && k != z)
+            {
+                color_cells_arr[k].SetActive(true);
+                color_cells_arr[k].GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.4f);
+                contour_cells_arr[k].SetActive(false);
+            }
+            else
+            {
+                color_cells_arr[k].SetActive(false);
+                color_cells_arr[k].GetComponent<Image>().color = new Color(1f, 1f,1f, 1f);
+                contour_cells_arr[k].SetActive(true);
+            }
     }
 }

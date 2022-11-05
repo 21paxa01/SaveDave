@@ -8,10 +8,13 @@ public class kettle : MonoBehaviour
     private float distToPlayer;
     public Animator anim;
     public float test;
+    public AudioSource chainik,plita;
+    private bool chek;
     void Start()
     {
         Bill = GameObject.Find("Bill");
         anim = GetComponent<Animator>();
+        chek = false;
     }
 
     // Update is called once per frame
@@ -19,7 +22,26 @@ public class kettle : MonoBehaviour
     {
         distToPlayer = Vector2.Distance(transform.position, Bill.transform.position);
         test = distToPlayer;
-        if(distToPlayer<0.3f)
+        if (distToPlayer < 0.3f)
+        {
             anim.SetBool("fire", true);
+            if (chek == false)
+            {
+                chek = true;
+                StartCoroutine(Audio());
+            }
+        }
+    }
+    IEnumerator Audio()
+    {
+        plita.Play();
+        yield return new WaitForSeconds(3.5f);
+        chainik.Play();
+    }
+    public void Stop()
+    {
+        plita.Stop();
+        chainik.Stop();
+        chek = false;
     }
 }

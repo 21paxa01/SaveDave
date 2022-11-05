@@ -6,6 +6,7 @@ TagManager:
   tags:
   - zombie
   - VirtualCamera
+  - ammo
   layers:
   - Default
   - TransparentFX

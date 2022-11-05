@@ -294,6 +294,7 @@ MonoBehaviour:
   musik: {fileID: 0}
   test1: 0
   boss: {fileID: 0}
+  wave: 0
   fill: 0
   bar: {fileID: 0}
   bill: {fileID: 0}
@@ -302,7 +303,6 @@ MonoBehaviour:
   i: 1
   WAVE: {fileID: 0}
   bill_icon: {fileID: 0}
-  test: 0
   town: {fileID: 0}
   town_1: {fileID: 0}
   town_2: {fileID: 0}
@@ -311,6 +311,7 @@ MonoBehaviour:
   town_5: {fileID: 0}
   town_6: {fileID: 0}
   last: 0
+  test: 0
   wave_time: 0
 --- !u!1 &102049603
 GameObject:
@@ -800,8 +801,11 @@ GameObject:
   - component: {fileID: 161413025}
   - component: {fileID: 161413024}
   - component: {fileID: 161413023}
+  - component: {fileID: 161413028}
+  - component: {fileID: 161413027}
+  - component: {fileID: 161413029}
   m_Layer: 0
-  m_Name: kettle_new_p_0
+  m_Name: kettle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -822,6 +826,8 @@ MonoBehaviour:
   Bill: {fileID: 0}
   anim: {fileID: 0}
   test: 0
+  chainik: {fileID: 161413028}
+  plita: {fileID: 161413027}
 --- !u!95 &161413024
 Animator:
   serializedVersion: 3
@@ -906,6 +912,221 @@ Transform:
   m_Father: {fileID: 134962927}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &161413027
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161413022}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e3a869b03e91608409288217a3fb5070, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &161413028
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161413022}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1688d12991e002c4aa4c15f8ea8ed475, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!164 &161413029
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161413022}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: 0
+  m_RoomHF: 0
+  m_DecayTime: 1
+  m_DecayHFRatio: 0.5
+  m_ReflectionsLevel: -10000
+  m_ReverbLevel: 0
+  m_ReverbDelay: 0.04
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 27
 --- !u!1 &163035069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1562,7 @@ MonoBehaviour:
   musik: {fileID: 0}
   test1: 0
   boss: {fileID: 0}
+  wave: 0
   fill: 0
   bar: {fileID: 0}
   bill: {fileID: 0}
@@ -1349,7 +1571,6 @@ MonoBehaviour:
   i: 1
   WAVE: {fileID: 0}
   bill_icon: {fileID: 0}
-  test: 0
   town: {fileID: 0}
   town_1: {fileID: 0}
   town_2: {fileID: 0}
@@ -1358,6 +1579,7 @@ MonoBehaviour:
   town_5: {fileID: 0}
   town_6: {fileID: 0}
   last: 0
+  test: 0
   wave_time: 0
 --- !u!1 &303399552
 GameObject:
@@ -1552,8 +1774,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 481843539}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &303399560
@@ -1694,6 +1919,7 @@ GameObject:
   - component: {fileID: 343436320}
   - component: {fileID: 343436319}
   - component: {fileID: 343436318}
+  - component: {fileID: 343436321}
   m_Layer: 0
   m_Name: rain
   m_TagString: Untagged
@@ -1785,6 +2011,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &343436321
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343436317}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 10f46b4deb47747c7acafe07adea6c21, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &345828140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,8 +2211,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 752001591}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &345828145
@@ -2907,8 +3232,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 603470362}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!50 &466754090
@@ -4347,8 +4675,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 589400895}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!50 &589637741
@@ -4611,6 +4942,7 @@ GameObject:
   - component: {fileID: 608884710}
   - component: {fileID: 608884711}
   - component: {fileID: 608884713}
+  - component: {fileID: 608884712}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -4645,7 +4977,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10226059, y: 0.20899987}
+  m_Offset: {x: 0.101373196, y: 0.20899987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4656,8 +4988,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13368416, y: 0.30125856}
+  m_Size: {x: 0.13545895, y: 0.30125856}
   m_EdgeRadius: 0
+--- !u!114 &608884712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608884709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56865d90bcb1b048a0956c26dcacb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &608884713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4671,7 +5015,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.106276035, y: 0.21259212}
+  m_Offset: {x: 0.060853958, y: 0.19382954}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4682,7 +5026,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14968395, y: 0.29844475}
+  m_Size: {x: 0.2405281, y: 0.3772068}
   m_EdgeRadius: 0
 --- !u!1001 &632067481
 PrefabInstance:
@@ -5543,6 +5887,7 @@ MonoBehaviour:
   musik: {fileID: 0}
   test1: 0
   boss: {fileID: 0}
+  wave: 0
   fill: 0
   bar: {fileID: 0}
   bill: {fileID: 0}
@@ -5551,7 +5896,6 @@ MonoBehaviour:
   i: 1
   WAVE: {fileID: 0}
   bill_icon: {fileID: 0}
-  test: 0
   town: {fileID: 0}
   town_1: {fileID: 0}
   town_2: {fileID: 0}
@@ -5560,6 +5904,7 @@ MonoBehaviour:
   town_5: {fileID: 0}
   town_6: {fileID: 0}
   last: 0
+  test: 0
   wave_time: 0
 --- !u!1 &796152626
 GameObject:
@@ -5575,7 +5920,6 @@ GameObject:
   - component: {fileID: 796152630}
   - component: {fileID: 796152628}
   - component: {fileID: 796152633}
-  - component: {fileID: 796152634}
   - component: {fileID: 796152629}
   - component: {fileID: 796152635}
   m_Layer: 0
@@ -5643,8 +5987,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 596318784}
   HP: 4
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!70 &796152630
@@ -5763,24 +6110,6 @@ MonoBehaviour:
   HP: 4
   dist_to_player: 0.3
   test: 100
---- !u!114 &796152634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796152626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eee855d1a91c8a84f9061468570baf84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poison_icon: {fileID: 0}
-  poison_damage: 0.6
-  a: 0
-  test: 0
-  text: {fileID: 0}
-  head: {fileID: 0}
 --- !u!114 &796152635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7223,8 +7552,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 404240052}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &956178770
@@ -7478,6 +7810,7 @@ MonoBehaviour:
   musik: {fileID: 0}
   test1: 0
   boss: {fileID: 1249380170}
+  wave: 0
   fill: 0
   bar: {fileID: 0}
   bill: {fileID: 0}
@@ -7486,7 +7819,6 @@ MonoBehaviour:
   i: 0
   WAVE: {fileID: 0}
   bill_icon: {fileID: 0}
-  test: 0
   town: {fileID: 1590210029}
   town_1: {fileID: 21300000, guid: 80d10273d84709247b2cbcf00386b588, type: 3}
   town_2: {fileID: 21300000, guid: 68b423a73122a67488255e5ca4ac1db5, type: 3}
@@ -7495,6 +7827,7 @@ MonoBehaviour:
   town_5: {fileID: 1249347635596220432, guid: c30a58055f7629146900d1f4ee90ee43, type: 3}
   town_6: {fileID: -7430504212897631067, guid: ff173c51a82f2464486847cca7948282, type: 3}
   last: 0
+  test: 0
   wave_time: 0
 --- !u!4 &1064776805
 Transform:
@@ -7803,8 +8136,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 1902325202}
   HP: 2
   hp: 0
+  bird: 1
   kef: 1
   disc_time: 0.2
 --- !u!114 &1092920306
@@ -7860,7 +8196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104943820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.858, y: 0, z: 30.444614}
+  m_LocalPosition: {x: 0, y: 0, z: 30.44461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 591427199}
@@ -7998,8 +8334,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 62262125}
   HP: 2
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &1104943827
@@ -8020,7 +8359,7 @@ MonoBehaviour:
   death: 0
   zombie_damage: 10
   atack_time: 0
-  boom_radius: 1
+  boom_radius: 0.8
   debaff: {fileID: 0}
   money: {fileID: 3767695553744215154, guid: bcb92257b1c1fde44a1564d8a19f3047, type: 3}
   money_spawn: {fileID: 62262125}
@@ -8029,6 +8368,7 @@ MonoBehaviour:
   default_speed: 0.75
   speed: 0.75
   HP: 0
+  boom_kef: 1
   dist_to_player: 0.4
   test: 100
 --- !u!114 &1104943828
@@ -8743,8 +9083,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 283079762}
   HP: 200
   hp: 0
+  bird: 0
   kef: 0
   disc_time: 0
 --- !u!114 &1249380175
@@ -9595,6 +9938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334231019}
+  - component: {fileID: 1334231020}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -9616,6 +9960,18 @@ Transform:
   m_Father: {fileID: 2045261739}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334231020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334231018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56865d90bcb1b048a0956c26dcacb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1357679618
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,7 +11046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522508944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 30.444614}
+  m_LocalPosition: {x: 0.8, y: 0, z: 30.444614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 961508315}
@@ -10857,8 +11213,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 1193805642}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &1522508952
@@ -11690,8 +12049,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 114500388}
   HP: 9
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &1729241936
@@ -12284,6 +12646,7 @@ MonoBehaviour:
   musik: {fileID: 0}
   test1: 0
   boss: {fileID: 0}
+  wave: 0
   fill: 0
   bar: {fileID: 0}
   bill: {fileID: 0}
@@ -12292,7 +12655,6 @@ MonoBehaviour:
   i: 1
   WAVE: {fileID: 0}
   bill_icon: {fileID: 0}
-  test: 0
   town: {fileID: 0}
   town_1: {fileID: 0}
   town_2: {fileID: 0}
@@ -12301,6 +12663,7 @@ MonoBehaviour:
   town_5: {fileID: 0}
   town_6: {fileID: 0}
   last: 0
+  test: 0
   wave_time: 0
 --- !u!1001 &1840704040
 PrefabInstance:
@@ -12513,8 +12876,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 1166978148}
   HP: 2
   hp: 0
+  bird: 1
   kef: 1
   disc_time: 0.2
 --- !u!114 &1866197308
@@ -13878,6 +14244,7 @@ GameObject:
   - component: {fileID: 2045261733}
   - component: {fileID: 2045261740}
   - component: {fileID: 2045261734}
+  - component: {fileID: 2045261741}
   m_Layer: 0
   m_Name: mike
   m_TagString: zombie
@@ -13907,8 +14274,11 @@ MonoBehaviour:
   sp: {fileID: 0}
   rb: {fileID: 0}
   save_script: {fileID: 0}
+  drawing: {fileID: 6734060355335687754, guid: 255bd5a1678e5304dbffef7cf6bd7fd8, type: 3}
+  money_spawn: {fileID: 1334231019}
   HP: 3
   hp: 0
+  bird: 0
   kef: 1
   disc_time: 0.2
 --- !u!114 &2045261734
@@ -13965,8 +14335,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06757736, y: 0.22054338}
-  m_Size: {x: 0.22167397, y: 0.44108677}
+  m_Offset: {x: -0.13782978, y: 0.22054338}
+  m_Size: {x: 0.08116913, y: 0.44108677}
   m_Direction: 0
 --- !u!50 &2045261737
 Rigidbody2D:
@@ -14088,6 +14458,22 @@ MonoBehaviour:
   speed: 0.5
   HP: 3
   dist_to_player: 1
+--- !u!58 &2045261741
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045261732}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.028464317, y: 0.355381}
+  serializedVersion: 2
+  m_Radius: 0.077589035
 --- !u!1 &2057069112
 GameObject:
   m_ObjectHideFlags: 0

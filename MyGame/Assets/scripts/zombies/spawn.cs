@@ -22,11 +22,10 @@ public class spawn : MonoBehaviour
     public GameObject restart;
     public GameMusic musik;
 
-    public float test1;
+    public int test1;
     public GameObject boss;
 
-    public static int wave =1;
-    //public Text text;
+    public  int wave ;
     public float fill;
     public Image bar;
     public GameObject bill;
@@ -43,7 +42,6 @@ public class spawn : MonoBehaviour
     public int i;
     public GameObject WAVE;
     public RectTransform bill_icon;
-    public int test;
 
 
     public SpriteRenderer town;
@@ -52,12 +50,14 @@ public class spawn : MonoBehaviour
     public static bool rain;
     private Save save;
     public bool last;
+    public int test;
     void Start()
     {
         zombie_arr = new GameObject[2];
         zombie_chance = new int[2];
         bestiary = GameObject.Find("Home_Canvas").GetComponent<Bestiary>();
         musik = GameObject.Find("GameMusic").GetComponent<GameMusic>();
+        save = GameObject.Find("save").GetComponent<Save>();
         ChangeChance();
         musik.sound.Play();
         zombie_kol = 0;
@@ -70,19 +70,18 @@ public class spawn : MonoBehaviour
         //text = GameObject.Find("Count").GetComponent<Text>();
         fill = 0f;
         script = bill.gameObject.GetComponent<bill>();
-        restart = GameObject.Find("RE");
-        restart.SetActive(false);
+        //restart = GameObject.Find("RE");
+        //restart.SetActive(false);
         WAVE.SetActive(false);
         town = GameObject.Find("town").GetComponent<SpriteRenderer>();
         //text = GetComponent<Text>();
-        save = GameObject.Find("save").GetComponent<Save>();
     }
 
 
     void Update()
     {
         test = zombie_kol;
-        test1 = bill_icon.position.x;
+        test1 = (int)(fill / 0.125f);
         //test1 = fill * 340f;
         bar.fillAmount = fill;
         //text.text = wave.ToString();
@@ -121,6 +120,7 @@ public class spawn : MonoBehaviour
         }
         last = true;
         Instantiate(zombie, spawn_point.position, transform.rotation);
+        zombie_kol++;
     }
 
     void SpawnPoint()
@@ -151,6 +151,9 @@ public class spawn : MonoBehaviour
         }
     }
     public int wave_time;
+    private bool last_wave;
+    private int last_wave_i;
+    private float last_wave_time;
     IEnumerator Wave()
     {
         a = 0;
@@ -158,22 +161,30 @@ public class spawn : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             fill += (0.01f / wave_time);
-            bill_icon.anchoredPosition = new Vector2(-20+fill*363, bill_icon.anchoredPosition.y);
-            if (fill >= 1)
+            bill_icon.anchoredPosition = new Vector2(-20 + fill * 363, bill_icon.anchoredPosition.y);
+            if (fill >= 1&&last_wave==false)
             {
                 fill = 1f;
                 a = 1;
+            }
+            if (last_wave == true&&test1<9)
+            {
+                spawn_time = last_wave_time - test1 * 0.25f;
             }
         }
         if (a == 1)
         {
             wave_img.victory = true;
             //StopCoroutine(Spawn());
+
         }
     }
     public void ChangeChance()
     {
         rain = false;
+        last_wave = false;
+        save.Load_progress();
+        wave = save.save_wave;
         if (wave == 1)
         {
             zombie_arr = new GameObject[2];
@@ -318,13 +329,18 @@ public class spawn : MonoBehaviour
         }
         else if (wave == 11)
         {
-            wave_time = 200;
-            spawn_time = 40f;
-            zombie_arr = new GameObject[1]; zombie_arr[0] = gru_zombie;
-            zombie_chance = new int[1]; zombie_chance[0] = 100;
+            last_wave = true;
+            wave_time = 120;
+            spawn_time = 3f;
+            last_wave_time = spawn_time;
+            zombie_arr = new GameObject[9];
+            zombie_arr[0] = mike_zombie; zombie_arr[1] = lara_zombie; zombie_arr[2] = default_zombie; zombie_arr[3] = bo_zombie; zombie_arr[4] = bibo_zombie; zombie_arr[5] = martin_zombie; zombie_arr[6] = karl_zombie; zombie_arr[7] = gru_zombie; zombie_arr[8] = richard_zombie;
+            zombie_chance = new int[9];
+            zombie_chance[0] = 8; zombie_chance[1] = 23; zombie_chance[2] = 33; zombie_chance[3] = 41; zombie_chance[4] = 49; zombie_chance[5] = 57; zombie_chance[6] = 71; zombie_chance[7] = 85; zombie_chance[8] = 100;
             town.sprite = town_5;
             musik.sound = musik.sound_2;
             rain = true;
+            l = 9;
         }
         else if (wave == 12)
         {

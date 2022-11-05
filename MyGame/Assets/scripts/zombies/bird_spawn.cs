@@ -16,10 +16,12 @@ public class bird_spawn : MonoBehaviour
     private float spawn_time;
     public static bool start;
     private bool chek;
+    private Save save;
     void Start()
     {
         chek = false;
         start = false;
+        save = GameObject.Find("save").GetComponent<Save>();
         ChangeChance();
         script = GetComponent<spawn>();
     }
@@ -27,7 +29,7 @@ public class bird_spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (start == true&&chek==true)
+        if (start == true&&chek==true&& save.training == false)
         {
             start = false;
             StartCoroutine(Spawn());
@@ -64,11 +66,12 @@ public class bird_spawn : MonoBehaviour
         a = 0;
         while (a < 1)
         {
-            yield return new WaitForSeconds(spawn_time);
             Birds();
             SpawnPoint();
             Instantiate(now_bird, spawn_point.position, transform.rotation);
             spawn.zombie_kol++;
+            yield return new WaitForSeconds(spawn_time);
+
         }
 
     }
@@ -98,7 +101,7 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[2]; bird_chance[0] = 50; bird_chance[1] = 100;
             spawn_time = 6.4f;
         }*/
-        if (spawn.wave == 2)
+        if (save.save_wave == 2)
         {
             chek = true;
             l = 1;
@@ -106,7 +109,7 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[1]; bird_chance[0] = 100;
             spawn_time = 9.4f;
         }
-        else if (spawn.wave == 5)
+        else if (save.save_wave == 5)
         {
             chek = true;
             l = 1;
@@ -122,7 +125,7 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[1]; bird_chance[0] = 100;
             spawn_time = 7.8f;
         }*/
-        else if (spawn.wave == 8)
+        else if (save.save_wave == 8)
         {
             chek = true;
             l = 1;
@@ -130,7 +133,7 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[1]; bird_chance[0] = 100;
             spawn_time = 9.4f;
         }
-        else if (spawn.wave == 10)
+        else if (save.save_wave == 10)
         {
             chek = true;
             l = 1;
@@ -138,7 +141,15 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[1]; bird_chance[0] = 100;
             spawn_time = 18f;
         }
-        else if (spawn.wave == 13)
+        else if (save.save_wave == 11)
+        {
+            chek = true;
+            l = 2;
+            bird_arr = new GameObject[1]; bird_arr[0] = bird;
+            bird_chance = new int[1]; bird_chance[0] = 100;
+            spawn_time = 10f;
+        }
+        else if (save.save_wave == 13)
         {
             chek = true;
             l = 1;
@@ -146,13 +157,13 @@ public class bird_spawn : MonoBehaviour
             bird_chance = new int[1]; bird_chance[0] = 100;
             spawn_time = 8f;
         }
-        else if (spawn.wave == 19)
+        else if (save.save_wave==19)
         {
             chek = true;
             l = 1;
             bird_arr = new GameObject[1]; bird_arr[0] = bird;
             bird_chance = new int[1]; bird_chance[0] = 100;
-            spawn_time = 8f;
+            spawn_time = 80f;
         }
         else
         {

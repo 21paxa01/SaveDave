@@ -25,11 +25,11 @@ public class inventory_grenade : MonoBehaviour
     public void Grenade_ON()
     {
         script.Grenade_OFF();
-        //script.Light_off();
+        script.Light_off();
         //change_weapon.weapons[script.i].SetActive(false);
         script.i = i;
         script.Grenade_ON();
-        //light.SetActive(true);
+        light.SetActive(true);
         //change_weapon.weapons[i].SetActive(true);
         /*if (i == 6)
         {

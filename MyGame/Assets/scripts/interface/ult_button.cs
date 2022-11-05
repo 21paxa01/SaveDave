@@ -8,6 +8,8 @@ public class ult_button : MonoBehaviour
     public GameObject skins;
     public change_weapon change;
     public ultimate ult;
+    public bool chek;
+    public AudioSource sound;
     void Start()
     {
         
@@ -20,11 +22,16 @@ public class ult_button : MonoBehaviour
     }
     public void UltOn()
     {
-        change.ult = true;
-        mashine.SetActive(true);
-        skins.SetActive(false);
-        gameObject.SetActive(false);
-        ult.Activate();
+        if (change.ult == false&&chek==false)
+        {
+            sound.Play();
+            chek = true;
+            change.ult = true;
+            mashine.SetActive(true);
+            skins.SetActive(false);
+            //gameObject.SetActive(false);
+            ult.Activate();
+        }
     }
 }
 

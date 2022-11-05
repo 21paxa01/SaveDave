@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: -7231507553416744270
     second: test_for_p_9
+  - first:
+      213: -4481832223599987716
+    second: test_for_p_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -350,6 +353,27 @@ TextureImporter:
       bones: []
       spriteID: 2b27a00c13684ab90800000000000000
       internalID: -7231507553416744270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: test_for_p_10
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 657
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf37c61a6555dc1c0800000000000000
+      internalID: -4481832223599987716
       vertices: []
       indices: 
       edges: []
